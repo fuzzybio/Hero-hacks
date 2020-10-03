@@ -4,7 +4,7 @@ var express = require("express");
 var app = express(); // express app which is used boilerplate for HTTP
 var server = require("http").createServer(app,{
 });
-
+const cors = require('cors');
 //moment js
 var moment = require("moment");
 
@@ -13,7 +13,7 @@ var clientInfo = {};
 //socket io module
 var io = require("socket.io")(server);
 
-
+app.use(cors());
 // expose the folder via express thought
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", 'http://localhost:9000'); //<--
@@ -118,7 +118,6 @@ io.on("connection", function(socket) {
       //socket.broadcast.emit("message",message);
       // now message should be only sent to users who are in same room
       socket.broadcast.to(clientInfo[socket.id].room).emit("message", message);
-      //socket.emit.to(clientInfo[socket.id].room).emit("message", message);
     }
 
   });

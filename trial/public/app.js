@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io.connect("http://localhost:9000");
  // listen for server connection
  // get query params from url
  var name = getQueryVariable("name") || 'Anonymous';
@@ -30,7 +30,7 @@ var socket = io();
  // if key is pressed typing message is seen else auto after 2 sec typing false message is send
  // TODO : add broadcast event when server receives typing event
  $('#messagebox').keyup(function() {
-   console.log('happening');
+   console.log('typed');
    typing = true;
    $("#icon-type").removeClass();
    //console.log("typing typing ....");
@@ -87,12 +87,12 @@ var socket = io();
  socket.on("message", function(message) {
    console.log("New Message !");
    console.log(message.text);
-   // insert messages in container
+   // insert messages
    var $messages = $(".messages");
    var $message = $('<li class = "list-group-item"></li>');
 
    var momentTimestamp = moment.utc(message.timestamp).local().format("h:mm a");
-   //$(".messages").append($('<p>').text(message.text));
+   
    $message.append("<strong>" + momentTimestamp + " " + message.name + "</strong>");
    $message.append("<p>" + message.text + "</p>");
    $messages.append($message);
@@ -109,13 +109,14 @@ var socket = io();
    // try notify , only when user has not open chat view
    if (document[hidden]) {
      notifyMe(message);
-     // also notify server that user has not seen messgae
+     // also notify server that user has not seen message
      var umsg = {
        text: name + " has not seen message",
        read: false
      };
      socket.emit("userSeen", umsg);
-   } else {
+   } 
+   else {
      // notify  server that user has seen message
      var umsg = {
        text: name + " has seen message",
@@ -144,10 +145,9 @@ var socket = io();
    var $messages = $(".messages");
    var $message = $('<li class = "list-group-item"></li>');
 
-   var momentTimestamp = moment().format("h:mm a");
+   var momentTimestamp = moment().format("hh:mm");
    // $(".messages").append($('<p>').text(message.text));
    $message.append("<strong>" + momentTimestamp + " " + name + "</strong>");
-   //$message.append("<p>" + $message1.val()+ "</p>");
    $message.append($("<p>", {
      class: "mymessages",
      text: $message1.val()
@@ -176,7 +176,7 @@ var socket = io();
    else if (Notification.permission === "granted") {
      // If it's okay let's create a notification
      //  var notification = new Notification(msg);
-     var notification = new Notification('Chat App', {
+     var notification = new Notification('Chat', {
        body: msg.name + ": " + msg.text,
        icon: '/images/apple-icon.png' // optional
      });
@@ -211,8 +211,6 @@ var socket = io();
              user: name
            };
            socket.emit("userSeen", umsg);
-           // assume user would see message so broadcast userSeen event
-           //window.open('http://www.mozilla.org', '_blank');
          };
        }
      });
