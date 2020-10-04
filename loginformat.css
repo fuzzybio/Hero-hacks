@@ -1,8 +1,91 @@
-* {
-    padding: 0;
-    margin: 0;
-    /*box-size:border-box;*/
+body{
+	background-color:  #c43896;
 }
-body {
-    background: rgba(255, 84, 151, 0.40);
+h1{
+	text-align: center;
+	font-size: 220%;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	margin-bottom: 13%;
 }
+#formContainer{
+	padding-top: 5%;
+	background-color: white;
+	border: 0px solid black;
+	border-radius: 30px 0 30px 0;
+	width: 25%;
+	height: 60%;
+	margin: 0 auto;
+	padding: 2rem;
+	box-shadow: 7px 7px 5px #6b2348;
+}
+
+#l1{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600; 
+	font-size: 100%;
+}
+
+#email1 input{
+	font-family: 'Montserrat', sans-serif;
+	width: 100%;
+	margin-bottom: 6%;
+}
+
+#pass1 input{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 100%;
+	width: 100%;	
+	padding-bottom: 2%;
+	margin-bottom: 6%;	 
+}
+
+input{
+	display: block;
+	margin: 0 auto;
+	border: none;
+	border-bottom: 2px solid #DBDBDB;
+}
+
+a{
+	font-family: 'Montserrat', sans-serif;
+}
+
+#btn1{
+	display: flex;
+	justify-content: space-between;
+}
+#btn1 a{
+	background-color: #4d4dff;
+	color: #fff; 
+	padding: 2%;
+	width: 20%;
+	border-radius: 20px;
+	text-align: center;
+	cursor: pointer;
+	transition-duration: 0.3s;
+}
+#btn2{
+	margin-top: 15px;
+	text-align: right;
+}
+
+#btn2 a{
+	text-decoration: underline;
+	padding-right: 2%;
+	cursor: pointer;
+	transition-duration: 0.4s;
+}
+
+#btn1 a:hover{
+	color: #4d4dff;
+	background-color: #fff;
+	border: 1px solid #4d4dff;
+}
+
+#btn2 a:hover{
+	text-decoration: none;
+	color: 333333;
+}
+
+
