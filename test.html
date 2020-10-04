@@ -1,26 +1,36 @@
 <html>
-    <head>
-        <title> Hero Hacks Website</title>
+<head>
+	<title> Hero Hacks Website</title>
 
-        <link rel = "stylesheet" type = "text/css"
-        href="loginformat.css">
-        <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
-        <script src = "firebaseTest.js"></script>
-    </head>
-    <body>
+	<link rel = "stylesheet" type = "text/css" href="loginformat.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
 
-        <h1> Hero Hacks Website</h1>
-        <div id = "formContainer">
-            <div id = "header"></div>
+	
+	<div id = "formContainer">
+		<h1> Hero Hacks Website</h1>
+		<div id = "email1">
+			<label id='l1'>EMAIL</label>
+			<p></p>
+			<input type="email" placeholder="Your email address goes here" id="email" required/>
+		</div>
+		<div id="pass1">
+			<label id='l1'>PASSWORD</label>
+			<p></p>
+			<input type="password" placeholder="••••••••••••••••••" id="password" required/>
+		</div>
+		<div id="btn1">
+			<a onclick="signUp()" id="signUp">Sign Up</a>
+			<a onclick="signIn()" id="signIn">Sign In</a>
+		</div>
+		<div id="btn2">
+			<a onclick="signOut()" id="signOut">Sign Out</a>
+		</div>
 
-            <input = type="email" placeholder="email" id="email"/>
-            <input = type="password" placeholder="password" id="password"/>
-
-            <button onclick="signUp()" id="signUp"> Sign Up</button>
-            <button onclick="signIn()" id="signIn"> Sign In</button>
-            <button onclick="signOut()" id="signOut"> Sign Out</button>
-
-        </div>
-    </body>
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
+	<script src = "firebaseTest.js"></script>
+</body>
 </html>
